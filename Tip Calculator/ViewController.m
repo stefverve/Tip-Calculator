@@ -10,6 +10,10 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tipPercentage;
+@property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
+
 @end
 
 @implementation ViewController
@@ -19,6 +23,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (IBAction)calculateTip:(UIButton *)sender {
+    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%.2f", ([self.billAmountTextField.text floatValue] * [self.tipPercentage.text floatValue] / 100.00)];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
